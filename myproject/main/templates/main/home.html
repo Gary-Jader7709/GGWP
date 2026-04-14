@@ -133,6 +133,23 @@
         margin-bottom: 10px;
       }
 
+      .course-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .course-link .card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .course-link .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      }
+
       .price {
         font-weight: bold;
         color: #2563eb;
@@ -187,19 +204,14 @@
       <h2>課程列表</h2>
       <div class="cards">
         {% for course in courses %}
-        <div class="card">
-          <h3>
-            <a
-              href="{% url 'course_detail' course.id %}"
-              style="text-decoration: none; color: #1f2937"
-            >
-              {{ course.title }}
-            </a>
-          </h3>
-          <p><strong>講師：</strong>{{ course.teacher }}</p>
-          <p>{{ course.description }}</p>
-          <div class="price">NT$ {{ course.price }}</div>
-        </div>
+        <a href="{% url 'course_detail' course.id %}" class="course-link">
+          <div class="card">
+            <h3>{{ course.title }}</h3>
+            <p><strong>講師：</strong>{{ course.teacher }}</p>
+            <p>{{ course.description }}</p>
+            <div class="price">NT$ {{ course.price }}</div>
+          </div>
+        </a>
         {% empty %}
         <div class="card">
           <h3>目前還沒有課程</h3>

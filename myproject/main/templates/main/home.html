@@ -188,7 +188,14 @@
       <div class="cards">
         {% for course in courses %}
         <div class="card">
-          <h3>{{ course.title }}</h3>
+          <h3>
+            <a
+              href="{% url 'course_detail' course.id %}"
+              style="text-decoration: none; color: #1f2937"
+            >
+              {{ course.title }}
+            </a>
+          </h3>
           <p><strong>講師：</strong>{{ course.teacher }}</p>
           <p>{{ course.description }}</p>
           <div class="price">NT$ {{ course.price }}</div>

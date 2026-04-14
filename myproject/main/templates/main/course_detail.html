@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ course.title }}</title>
+    <style>
+      body {
+        font-family: "Microsoft JhengHei", sans-serif;
+        background: #f5f7fb;
+        margin: 0;
+        padding: 40px 20px;
+        color: #222;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: white;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #111827;
+      }
+
+      .info {
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #374151;
+      }
+
+      .description {
+        margin-top: 25px;
+        line-height: 1.9;
+        color: #4b5563;
+        font-size: 17px;
+      }
+
+      .price {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2563eb;
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 22px;
+        background: #1f2937;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>{{ course.title }}</h1>
+        <div class="info"><strong>講師：</strong>{{ course.teacher }}</div>
+        <div class="price">NT$ {{ course.price }}</div>
+        <div class="description">
+          <strong>課程介紹：</strong><br /><br />
+          {{ course.description }}
+        </div>
+
+        <a href="/" class="back-btn">回首頁</a>
+      </div>
+    </div>
+  </body>
+</html>

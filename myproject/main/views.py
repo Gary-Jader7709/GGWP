@@ -119,7 +119,19 @@ def teacher_dashboard(request):
     except Profile.DoesNotExist:
         return redirect('home')
 
-    return render(request, 'main/teacher_dashboard.html')
+    teacher_courses = Course.objects.filter(teacher=request.user)
+
+    course_data = []
+    for course in teacher_courses:
+        purchase_count = Enrollment.objects.filter(course=course).count()
+        course_data.append({
+            'course': course,
+            'purchase_count': purchase_count,
+        })
+
+    return render(request, 'main/teacher_dashboard.html', {
+        'course_data': course_data
+    })
 
 @login_required
 def buy_course(request, course_id):

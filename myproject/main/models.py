@@ -19,7 +19,7 @@ class Profile(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name="課程名稱")
-    teacher = models.CharField(max_length=100, verbose_name="講師")
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="講師")
     price = models.IntegerField(verbose_name="價格")
     description = models.TextField(verbose_name="課程介紹")
     image = models.ImageField(upload_to='course_images/', verbose_name="課程圖片", blank=True, null=True)

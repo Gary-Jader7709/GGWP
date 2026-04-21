@@ -4,7 +4,7 @@ from .models import Course, Profile, Enrollment
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('title', 'teacher', 'price', 'created_at')
-    search_fields = ('title', 'teacher')
+    search_fields = ('title', 'teacher__username')
     list_filter = ('teacher',)
 
 @admin.register(Profile)

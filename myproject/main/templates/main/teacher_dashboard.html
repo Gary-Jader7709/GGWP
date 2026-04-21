@@ -13,7 +13,7 @@
       }
 
       .container {
-        max-width: 1000px;
+        max-width: 1100px;
         margin: 50px auto;
         padding: 20px;
       }
@@ -53,7 +53,31 @@
         margin-bottom: 10px;
       }
 
-      a.btn {
+      .course-list {
+        margin-top: 32px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .course-item {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 20px;
+      }
+
+      .course-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .meta {
+        color: #4b5563;
+        line-height: 1.8;
+      }
+
+      .btn {
         display: inline-block;
         margin-top: 22px;
         background: #2563eb;
@@ -61,6 +85,17 @@
         padding: 12px 22px;
         border-radius: 12px;
         text-decoration: none;
+      }
+
+      .empty-box {
+        margin-top: 24px;
+        background: #f9fafb;
+        border: 2px dashed #cbd5e1;
+        border-radius: 18px;
+        padding: 30px;
+        text-align: center;
+        color: #64748b;
+        line-height: 1.8;
       }
     </style>
   </head>
@@ -70,24 +105,47 @@
         <h1>老師首頁</h1>
         <p>
           歡迎，{{ request.user.username
-          }}。你目前是老師身分，之後可以在這裡管理課程、查看購買人數與 Power BI
-          課程分析。
+          }}。這裡會顯示你所管理的課程與目前購買狀況。
         </p>
 
         <div class="box-group">
           <div class="box">
             <h3>我的課程</h3>
-            <p>之後可顯示你所建立或管理的課程內容。</p>
+            <p>顯示你所建立或管理的課程內容。</p>
           </div>
           <div class="box">
             <h3>銷售與購買</h3>
-            <p>之後可顯示各課程被購買次數與營收資料。</p>
+            <p>可查看每門課程被購買的次數，作為後續營收分析基礎。</p>
           </div>
           <div class="box">
             <h3>Power BI 分析</h3>
-            <p>之後可視覺化顯示課程成效與學生學習數據。</p>
+            <p>後續可將課程購買數、熱門課程與學習數據視覺化呈現。</p>
           </div>
         </div>
+
+        {% if course_data %}
+        <div class="course-list">
+          {% for item in course_data %}
+          <div class="course-item">
+            <div class="course-title">{{ item.course.title }}</div>
+            <div class="meta">
+              <strong>價格：</strong>NT$ {{ item.course.price }}
+            </div>
+            <div class="meta">
+              <strong>購買人數：</strong>{{ item.purchase_count }} 人
+            </div>
+            <div class="meta">
+              <strong>課程介紹：</strong>{{ item.course.description }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-box">
+          你目前還沒有被指派任何課程。<br />
+          請先到後台新增課程，並把講師指定成你的老師帳號。
+        </div>
+        {% endif %}
 
         <a href="/" class="btn">回首頁</a>
       </div>

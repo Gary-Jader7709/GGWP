@@ -13,124 +13,191 @@
 
       body {
         font-family: "Microsoft JhengHei", sans-serif;
-        background: #f5f7fb;
-        color: #222;
+        background: #f7f8fb;
+        color: #1f2937;
+      }
+
+      a {
+        text-decoration: none;
       }
 
       .navbar {
-        background: #1f2937;
-        color: white;
-        padding: 18px 40px;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
-      .navbar .logo {
+      .logo {
         font-size: 24px;
         font-weight: bold;
+        color: #111827;
       }
 
-      .navbar .menu a {
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
+      .nav-menu {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .nav-menu a {
+        color: #374151;
         font-size: 15px;
       }
 
-      .hero {
-        max-width: 1100px;
-        margin: 60px auto;
-        padding: 60px 40px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
+      .nav-btn {
+        background: #2563eb;
+        color: white !important;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: bold;
       }
 
-      .hero-text {
-        flex: 1;
-        min-width: 280px;
+      .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 70px 24px 50px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 36px;
+        align-items: center;
       }
 
       .hero-text h1 {
-        font-size: 42px;
+        font-size: 48px;
+        line-height: 1.25;
         margin-bottom: 20px;
         color: #111827;
       }
 
       .hero-text p {
         font-size: 18px;
-        line-height: 1.8;
-        margin-bottom: 16px;
         color: #4b5563;
+        line-height: 1.9;
+        margin-bottom: 14px;
       }
 
-      .hero-text .btn {
+      .hero-actions {
+        margin-top: 28px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
         display: inline-block;
-        margin-top: 20px;
-        padding: 14px 28px;
         background: #2563eb;
         color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-size: 16px;
-      }
-
-      .hero-image {
-        flex: 1;
-        min-width: 260px;
-        text-align: center;
-      }
-
-      .hero-image .box {
-        background: linear-gradient(135deg, #60a5fa, #2563eb);
-        color: white;
-        padding: 60px 30px;
-        border-radius: 20px;
-        font-size: 24px;
+        padding: 14px 24px;
+        border-radius: 12px;
         font-weight: bold;
       }
 
-      .section {
-        max-width: 1100px;
-        margin: 30px auto 60px;
-        padding: 0 20px;
+      .btn-secondary {
+        display: inline-block;
+        background: white;
+        color: #2563eb;
+        border: 1px solid #cbd5e1;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-weight: bold;
       }
 
-      .section h2 {
-        font-size: 30px;
-        margin-bottom: 25px;
+      .hero-card {
+        background: linear-gradient(135deg, #2563eb, #60a5fa);
+        border-radius: 28px;
+        min-height: 360px;
+        color: white;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 18px 40px rgba(37, 99, 235, 0.18);
+      }
+
+      .hero-card-top {
+        font-size: 15px;
+        opacity: 0.9;
+      }
+
+      .hero-card-center {
+        font-size: 34px;
+        font-weight: bold;
+        line-height: 1.5;
+      }
+
+      .hero-card-bottom {
+        font-size: 15px;
+        opacity: 0.95;
+      }
+
+      .section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 24px 10px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 24px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .section-title {
+        font-size: 34px;
         color: #111827;
+        margin-bottom: 8px;
+      }
+
+      .section-desc {
+        color: #6b7280;
+        line-height: 1.8;
+        font-size: 16px;
       }
 
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
       }
 
-      .card {
+      .feature-card,
+      .course-card,
+      .placeholder-card {
         background: white;
-        padding: 25px;
-        border-radius: 16px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
       }
 
-      .card h3 {
-        margin-bottom: 12px;
-        font-size: 22px;
-        color: #1f2937;
+      .feature-card h3,
+      .course-card h3,
+      .placeholder-card h3 {
+        font-size: 24px;
+        margin-bottom: 14px;
+        color: #111827;
       }
 
-      .card p {
+      .feature-card p,
+      .course-card p,
+      .placeholder-card p {
         color: #6b7280;
-        line-height: 1.7;
-        margin-bottom: 10px;
+        line-height: 1.8;
+        font-size: 16px;
       }
 
       .course-link {
@@ -139,85 +206,296 @@
         display: block;
       }
 
-      .course-link .card {
+      .course-card {
         transition:
           transform 0.2s ease,
           box-shadow 0.2s ease;
       }
 
-      .course-link .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      .course-link:hover .course-card {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.1);
+      }
+
+      .course-img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 18px;
+        background: #e5e7eb;
+      }
+
+      .teacher {
+        margin: 10px 0 8px;
+        color: #4b5563 !important;
       }
 
       .price {
+        margin-top: 14px;
+        font-size: 24px;
         font-weight: bold;
         color: #2563eb;
-        font-size: 20px;
-        margin-top: 10px;
+      }
+
+      .placeholder-box {
+        margin-top: 20px;
+        background: #f3f4f6;
+        border: 2px dashed #cbd5e1;
+        border-radius: 18px;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #64748b;
+        padding: 24px;
+        line-height: 1.8;
+      }
+
+      .footer {
+        margin-top: 70px;
+        background: #111827;
+        color: #d1d5db;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .footer-title {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-text h1 {
+          font-size: 38px;
+        }
+
+        .hero-card {
+          min-height: 260px;
+        }
+
+        .section-title {
+          font-size: 28px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav-inner {
+          flex-direction: column;
+          gap: 14px;
+          align-items: flex-start;
+        }
+
+        .nav-menu {
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+
+        .hero {
+          padding-top: 40px;
+        }
+
+        .hero-text h1 {
+          font-size: 32px;
+        }
+
+        .hero-text p {
+          font-size: 16px;
+        }
+
+        .hero-card-center {
+          font-size: 28px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="navbar">
-      <div class="logo">Course Platform</div>
-      <div class="menu">
-        <a href="#">首頁</a>
-        <a href="#">課程</a>
-        <a href="#">登入</a>
-        <a href="#">註冊</a>
+      <div class="nav-inner">
+        <div class="logo">Course Platform</div>
+        <div class="nav-menu">
+          <a href="#">首頁</a>
+          <a href="#">課程總覽</a>
+          <a href="#">數據分析</a>
+          <a href="#">AI 助理</a>
+          {% if user.is_authenticated %}
+          <a href="#">歡迎，{{ user.username }}</a>
+          <a href="{% url 'logout' %}">登出</a>
+          {% else %}
+          <a href="{% url 'login' %}">登入</a>
+          <a href="{% url 'register' %}" class="nav-btn">註冊</a>
+          {% endif %}
+        </div>
       </div>
     </div>
 
     <div class="hero">
       <div class="hero-text">
-        <h1>我的線上課程平台</h1>
-        <p>這是我用 Django 製作的第一個網站首頁。</p>
-        <p>目前已經完成首頁、後台管理，以及課程資料串接。</p>
-        <a href="#" class="btn">開始探索</a>
+        <h1>找到適合你的<br />線上課程與學習方式</h1>
+        <p>結合課程平台、數據分析與智慧推薦，打造更直覺的學習體驗。</p>
+        <p>
+          本專題以 Hahow
+          類型的平台功能為核心，並以更清楚、直觀的版面風格作為設計方向。
+        </p>
+        <div class="hero-actions">
+          <a href="#course-section" class="btn-primary">立即探索課程</a>
+          <a href="#powerbi-section" class="btn-secondary">查看分析專區</a>
+        </div>
       </div>
 
-      <div class="hero-image">
-        <div class="box">Django 專題啟動</div>
+      <div class="hero-card">
+        <div class="hero-card-top">線上學習平台專題</div>
+        <div class="hero-card-center">
+          課程瀏覽<br />
+          購課流程<br />
+          數據分析<br />
+          AI 擴充預留
+        </div>
+        <div class="hero-card-bottom">Hahow 功能邏輯 × 直覺式平台排版</div>
       </div>
     </div>
 
     <div class="section">
-      <h2>平台特色</h2>
+      <div class="section-header">
+        <div>
+          <div class="section-title">平台特色</div>
+          <div class="section-desc">
+            以清楚的資訊區塊與容易理解的操作流程，讓使用者更快找到需要的課程與服務。
+          </div>
+        </div>
+      </div>
+
       <div class="cards">
-        <div class="card">
+        <div class="feature-card">
           <h3>課程管理</h3>
-          <p>可展示課程名稱、介紹、價格與授課老師資訊。</p>
+          <p>
+            可展示課程名稱、課程介紹、講師資訊、價格與封面圖片，並透過後台快速維護課程內容。
+          </p>
         </div>
-        <div class="card">
+        <div class="feature-card">
           <h3>會員功能</h3>
-          <p>支援註冊、登入、個人資料與購課紀錄管理。</p>
+          <p>
+            未來可擴充註冊、登入、個人資料、購課紀錄與我的課程等功能，建立完整學習流程。
+          </p>
         </div>
-        <div class="card">
+        <div class="feature-card">
           <h3>後台系統</h3>
-          <p>管理員可以維護課程資料、會員資料與訂單資訊。</p>
+          <p>
+            管理員可透過 Django
+            後台新增課程、修改內容、上傳圖片，並作為後續訂單管理的基礎。
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <h2>課程列表</h2>
+    <div class="section" id="course-section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">精選課程</div>
+          <div class="section-desc">
+            以下課程內容由後台動態管理，新增或修改資料後，首頁會自動同步更新。
+          </div>
+        </div>
+      </div>
+
       <div class="cards">
         {% for course in courses %}
         <a href="{% url 'course_detail' course.id %}" class="course-link">
-          <div class="card">
+          <div class="course-card">
+            {% if course.image %}
+            <img
+              src="{{ course.image.url }}"
+              alt="{{ course.title }}"
+              class="course-img"
+            />
+            {% endif %}
             <h3>{{ course.title }}</h3>
-            <p><strong>講師：</strong>{{ course.teacher }}</p>
+            <p class="teacher"><strong>講師：</strong>{{ course.teacher }}</p>
             <p>{{ course.description }}</p>
             <div class="price">NT$ {{ course.price }}</div>
           </div>
         </a>
         {% empty %}
-        <div class="card">
+        <div class="course-card">
           <h3>目前還沒有課程</h3>
           <p>請先到後台新增課程資料。</p>
         </div>
         {% endfor %}
+      </div>
+    </div>
+
+    <div class="section" id="powerbi-section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Power BI 分析專區</div>
+          <div class="section-desc">
+            此區塊預留給課程熱度、購課趨勢、學習行為分析等資料視覺化內容，後續可整合
+            Power BI 儀表板。
+          </div>
+        </div>
+      </div>
+
+      <div class="placeholder-card">
+        <h3>Power BI Dashboard Placeholder</h3>
+        <p>
+          目前先保留分析模組位置，之後可依專題需求嵌入報表、互動圖表或數據摘要卡片。
+        </p>
+        <div class="placeholder-box">
+          這裡預留給 Power BI 內容<br />
+          可放 iframe、嵌入報表、統計摘要或分析截圖
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="ai-section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">AI 智慧功能專區</div>
+          <div class="section-desc">
+            此區塊預留給 AI
+            課程推薦、學習建議、問答助理或聊天互動功能，後續可再依需求接入模型與
+            API。
+          </div>
+        </div>
+      </div>
+
+      <div class="placeholder-card">
+        <h3>AI Feature Placeholder</h3>
+        <p>
+          目前先保留 AI
+          模組位置，未來可擴充成智慧助理、推薦系統、關鍵字問答或個人化學習建議。
+        </p>
+        <div class="placeholder-box">
+          這裡預留給 AI 功能<br />
+          可放聊天視窗、推薦結果、AI 問答區或提示卡片
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-title">Course Platform</div>
+          <div>線上課程平台專題展示頁面</div>
+        </div>
+        <div>
+          <div class="footer-title">後續擴充方向</div>
+          <div>會員系統 / 購課流程 / Power BI / AI 助理</div>
+        </div>
       </div>
     </div>
   </body>

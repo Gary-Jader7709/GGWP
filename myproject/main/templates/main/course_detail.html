@@ -44,11 +44,36 @@
         font-size: 17px;
       }
 
+      .detail-img {
+        width: 100%;
+        max-height: 420px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 25px;
+      }
+
       .price {
         margin-top: 20px;
         font-size: 24px;
         font-weight: bold;
         color: #2563eb;
+      }
+
+      .buy-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #2563eb;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .purchased-text {
+        margin-top: 20px;
+        color: green;
+        font-weight: bold;
       }
 
       .back-btn {
@@ -65,14 +90,32 @@
   <body>
     <div class="container">
       <div class="card">
+        {% if course.image %}
+        <img
+          src="{{ course.image.url }}"
+          alt="{{ course.title }}"
+          class="detail-img"
+        />
+        {% endif %}
+
         <h1>{{ course.title }}</h1>
         <div class="info"><strong>講師：</strong>{{ course.teacher }}</div>
         <div class="price">NT$ {{ course.price }}</div>
+
         <div class="description">
           <strong>課程介紹：</strong><br /><br />
           {{ course.description }}
         </div>
 
+        {% if user.is_authenticated %} {% if already_purchased %}
+        <p class="purchased-text">你已經購買過這門課程</p>
+        {% else %}
+        <a href="{% url 'buy_course' course.id %}" class="buy-btn">立即購買</a>
+        {% endif %} {% else %}
+        <a href="{% url 'login' %}" class="buy-btn">登入後購買</a>
+        {% endif %}
+
+        <br />
         <a href="/" class="back-btn">回首頁</a>
       </div>
     </div>

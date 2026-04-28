@@ -142,8 +142,12 @@ def buy_course(request, course_id):
     except Profile.DoesNotExist:
         return redirect('home')
 
-    if profile.role != 'student':
-        return redirect('home')
+    enrollment, created = Enrollment.objects.get_or_create(
+        student=request.user,
+        course=course
+    )
+
+    return redirect('purchase_success', course_id=course.id)
 
     enrollment, created = Enrollment.objects.get_or_create(
         student=request.user,
@@ -156,3 +160,13 @@ def buy_course(request, course_id):
 def purchase_success(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     return render(request, 'main/purchase_success.html', {'course': course})
+@login_required
+def profile_view(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        return redirect('home')
+
+    return render(request, 'main/profile.html', {
+        'profile': profile
+    })

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>新增課程</title>
+    <style>
+      body {
+        font-family: "Microsoft JhengHei";
+        background: #f7f8fb;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+      }
+
+      button {
+        background: #2563eb;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>新增課程</h1>
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">建立課程</button>
+        </form>
+
+        <br />
+        <a href="{% url 'teacher_dashboard' %}">回教師專區</a>
+      </div>
+    </div>
+  </body>
+</html>

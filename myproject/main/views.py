@@ -4,6 +4,28 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Profile, Enrollment
 from .forms import RegisterForm
+from .forms import CourseForm
+
+@login_required
+def create_course(request):
+    try:
+        profile = request.user.profile
+        if profile.role != 'teacher':
+            return redirect('home')
+    except:
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            course = form.save(commit=False)
+            course.teacher = request.user  # 自動綁老師
+            course.save()
+            return redirect('teacher_dashboard')
+    else:
+        form = CourseForm()
+
+    return render(request, 'main/create_course.html', {'form': form})
 
 def home(request):
     courses = Course.objects.all()

@@ -1,5 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
+from django import forms
+from .models import Course
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['title', 'price', 'description', 'image']
 
 class RegisterForm(forms.Form):
     username = forms.CharField(label='帳號', max_length=150)

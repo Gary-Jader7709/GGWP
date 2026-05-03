@@ -25,4 +25,5 @@ urlpatterns = [
     ), name='password_reset_done'),
     path('my-courses/', views.my_courses, name='my_courses'),
     path('profile/', views.profile_view, name='profile'),
+    path('create-course/', views.create_course, name='create_course'),
 ]

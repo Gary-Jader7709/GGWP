@@ -87,6 +87,17 @@
         text-decoration: none;
       }
 
+      .btn-small {
+        margin-top: 14px;
+        margin-right: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+
+      .btn-danger {
+        background: #dc2626;
+      }
+
       .empty-box {
         margin-top: 24px;
         background: #f9fafb;
@@ -100,12 +111,14 @@
     </style>
   </head>
   <body>
+    {% include 'main/partials/navbar.html' %}
+
     <div class="container">
       <div class="card">
         <h1>老師首頁</h1>
         <p>
           歡迎，{{ request.user.username
-          }}。這裡會顯示你所管理的課程與目前購買狀況。
+          }}。這裡會顯示你所管理的課程、購買狀況與學習數據。
         </p>
 
         <a href="{% url 'create_course' %}" class="btn">＋ 新增課程</a>
@@ -130,22 +143,43 @@
           {% for item in course_data %}
           <div class="course-item">
             <div class="course-title">{{ item.course.title }}</div>
+
             <div class="meta">
               <strong>價格：</strong>NT$ {{ item.course.price }}
             </div>
+
             <div class="meta">
               <strong>購買人數：</strong>{{ item.purchase_count }} 人
             </div>
+
+            <div class="meta">
+              <strong>總觀看時間：</strong>{{ item.total_watch_minutes }} 分鐘
+            </div>
+
             <div class="meta">
               <strong>課程介紹：</strong>{{ item.course.description }}
             </div>
+
+            <a
+              href="{% url 'edit_course' item.course.id %}"
+              class="btn btn-small"
+            >
+              編輯課程
+            </a>
+
+            <a
+              href="{% url 'delete_course' item.course.id %}"
+              class="btn btn-small btn-danger"
+            >
+              刪除課程
+            </a>
           </div>
           {% endfor %}
         </div>
         {% else %}
         <div class="empty-box">
-          你目前還沒有被指派任何課程。<br />
-          請先到後台新增課程，並把講師指定成你的老師帳號。
+          你目前還沒有建立任何課程。<br />
+          可以點上方「＋ 新增課程」建立你的第一門課。
         </div>
         {% endif %}
 

@@ -2,8 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>忘記密碼</title>
+    <title>編輯課程</title>
     <style>
       body {
         font-family: "Microsoft JhengHei", sans-serif;
@@ -13,72 +12,75 @@
       }
 
       .container {
-        max-width: 520px;
-        margin: 60px auto;
+        max-width: 650px;
+        margin: 50px auto;
         padding: 20px;
       }
 
       .card {
         background: white;
-        border-radius: 20px;
         padding: 32px;
+        border-radius: 20px;
         box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
       }
 
       h1 {
         margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 32px;
       }
 
-      p {
-        color: #6b7280;
-        line-height: 1.8;
-        margin-bottom: 20px;
-      }
-
-      input[type="email"] {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1px solid #d1d5db;
-        border-radius: 10px;
-        font-size: 16px;
+      form p {
         margin-bottom: 16px;
       }
 
-      .btn {
-        width: 100%;
-        border: none;
-        background: #2563eb;
-        color: white;
-        padding: 14px;
-        border-radius: 12px;
-        font-size: 16px;
+      label {
         font-weight: bold;
-        cursor: pointer;
+        display: block;
+        margin-bottom: 8px;
       }
 
-      .back {
-        display: inline-block;
-        margin-top: 18px;
-        color: #2563eb;
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      .btn {
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        cursor: pointer;
         text-decoration: none;
+        display: inline-block;
+        margin-top: 12px;
+      }
+
+      .btn-dark {
+        background: #1f2937;
       }
     </style>
   </head>
   <body>
     {% include 'main/partials/navbar.html' %}
+
     <div class="container">
       <div class="card">
-        <h1>忘記密碼</h1>
-        <p>請輸入你註冊時使用的 Gmail，我們會寄送重設密碼的連結給你。</p>
+        <h1>編輯課程</h1>
+        <p>正在編輯：<strong>{{ course.title }}</strong></p>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %} {{ form.as_p }}
-          <button type="submit" class="btn">寄送重設連結</button>
+          <button type="submit" class="btn">儲存修改</button>
         </form>
 
-        <a href="{% url 'login' %}" class="back">回登入頁</a>
+        <a href="{% url 'teacher_dashboard' %}" class="btn btn-dark"
+          >回教師專區</a
+        >
       </div>
     </div>
   </body>

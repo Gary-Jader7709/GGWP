@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Profile(models.Model):
     ROLE_CHOICES = [
         ('student', '學生'),
@@ -17,12 +18,18 @@ class Profile(models.Model):
         verbose_name = "使用者資料"
         verbose_name_plural = "使用者資料"
 
+
 class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name="課程名稱")
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="講師")
     price = models.IntegerField(verbose_name="價格")
     description = models.TextField(verbose_name="課程介紹")
-    image = models.ImageField(upload_to='course_images/', verbose_name="課程圖片", blank=True, null=True)
+    image = models.ImageField(
+        upload_to='course_images/',
+        verbose_name="課程圖片",
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="建立時間")
 
     def __str__(self):
@@ -31,6 +38,7 @@ class Course(models.Model):
     class Meta:
         verbose_name = "課程"
         verbose_name_plural = "課程管理"
+
 
 class Enrollment(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="學生")
@@ -44,3 +52,17 @@ class Enrollment(models.Model):
         verbose_name = "購課紀錄"
         verbose_name_plural = "購課紀錄"
         unique_together = ('student', 'course')
+
+
+class LearningRecord(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="使用者")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="課程")
+    minutes = models.PositiveIntegerField(default=30, verbose_name="觀看分鐘數")
+    watched_at = models.DateTimeField(auto_now_add=True, verbose_name="觀看時間")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.course.title} - {self.minutes} 分鐘"
+
+    class Meta:
+        verbose_name = "學習紀錄"
+        verbose_name_plural = "學習紀錄"

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Course, Profile, Enrollment
+from .models import Course, Profile, Enrollment, LearningRecord
+
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
@@ -7,14 +8,23 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ('title', 'teacher__username')
     list_filter = ('teacher',)
 
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'role')
     search_fields = ('user__username',)
     list_filter = ('role',)
 
+
 @admin.register(Enrollment)
 class EnrollmentAdmin(admin.ModelAdmin):
     list_display = ('student', 'course', 'purchased_at')
     search_fields = ('student__username', 'course__title')
     list_filter = ('purchased_at',)
+
+
+@admin.register(LearningRecord)
+class LearningRecordAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', 'minutes', 'watched_at')
+    search_fields = ('user__username', 'course__title')
+    list_filter = ('course', 'watched_at')

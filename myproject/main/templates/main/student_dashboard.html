@@ -53,6 +53,12 @@
         margin-bottom: 10px;
       }
 
+      .number {
+        font-size: 30px;
+        color: #2563eb;
+        font-weight: bold;
+      }
+
       a.btn {
         display: inline-block;
         margin-top: 22px;
@@ -65,12 +71,14 @@
     </style>
   </head>
   <body>
+    {% include 'main/partials/navbar.html' %}
+
     <div class="container">
       <div class="card">
         <h1>學生首頁</h1>
         <p>
           歡迎，{{ request.user.username
-          }}。你目前是學生身分，之後可以在這裡查看我的課程、學習紀錄與 Power BI
+          }}。你目前是學生身分，可以在這裡查看我的課程、學習紀錄與 Power BI
           學習分析。
         </p>
 
@@ -80,13 +88,22 @@
             <p>查看已購買課程與正在學習的內容。</p>
             <a href="{% url 'my_courses' %}" class="btn">前往我的課程</a>
           </div>
+
           <div class="box">
-            <h3>學習紀錄</h3>
-            <p>之後可顯示觀看時數、課程類型與學習進度。</p>
+            <h3>已購課程數</h3>
+            <div class="number">{{ purchased_count }}</div>
+            <p>目前帳號已購買的課程數量。</p>
           </div>
+
+          <div class="box">
+            <h3>累積學習時間</h3>
+            <div class="number">{{ total_minutes }}</div>
+            <p>目前累積觀看分鐘數，可作為 Power BI 分析資料來源。</p>
+          </div>
+
           <div class="box">
             <h3>Power BI 分析</h3>
-            <p>之後可視覺化顯示個人學習數據。</p>
+            <p>之後可視覺化顯示個人學習數據、課程類型與學習趨勢。</p>
           </div>
         </div>
 

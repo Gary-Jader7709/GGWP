@@ -41,6 +41,18 @@
         margin-bottom: 28px;
       }
 
+      .summary-box {
+        background: #eff6ff;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 28px;
+      }
+
+      .summary-box strong {
+        color: #2563eb;
+        font-size: 22px;
+      }
+
       .course-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -94,14 +106,12 @@
         font-weight: bold;
       }
 
-      .back-btn {
-        display: inline-block;
-        margin-top: 28px;
+      .btn-dark {
         background: #1f2937;
-        color: white;
-        padding: 12px 20px;
-        border-radius: 10px;
-        text-decoration: none;
+      }
+
+      .btn-green {
+        background: #16a34a;
       }
 
       .empty-box {
@@ -116,12 +126,19 @@
     </style>
   </head>
   <body>
+    {% include 'main/partials/navbar.html' %}
+
     <div class="container">
       <div class="card">
         <h1>我的課程</h1>
         <p class="desc">
-          歡迎，{{ request.user.username }}。這裡會顯示你已購買的所有課程。
+          歡迎，{{ request.user.username
+          }}。這裡會顯示你已購買的所有課程與學習紀錄。
         </p>
+
+        <div class="summary-box">
+          累積學習時間：<strong>{{ total_minutes }}</strong> 分鐘
+        </div>
 
         {% if enrollments %}
         <div class="course-grid">
@@ -137,9 +154,13 @@
 
             <div class="course-title">{{ enrollment.course.title }}</div>
             <div class="meta">
-              <strong>講師：</strong>{{ enrollment.course.teacher }}
+              <strong>講師：</strong>{{ enrollment.course.teacher.username }}
             </div>
             <div class="meta">{{ enrollment.course.description }}</div>
+            <div class="meta">
+              <strong>本課程觀看時間：</strong>{{ enrollment.watch_minutes }}
+              分鐘
+            </div>
             <div class="buy-time">
               <strong>購買時間：</strong>{{ enrollment.purchased_at }}
             </div>
@@ -149,6 +170,13 @@
               class="btn"
             >
               查看課程
+            </a>
+
+            <a
+              href="{% url 'watch_course' enrollment.course.id %}"
+              class="btn btn-green"
+            >
+              模擬觀看 30 分鐘
             </a>
           </div>
           {% endfor %}
@@ -160,7 +188,7 @@
         </div>
         {% endif %}
 
-        <a href="/" class="back-btn">回首頁</a>
+        <a href="/" class="btn btn-dark">回首頁</a>
       </div>
     </div>
   </body>
